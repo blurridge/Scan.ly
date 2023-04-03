@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 export const DateTime = () => {
   const [dateState, setDateState] = useState(new Date());
   useEffect(() => {
-    setInterval(() => setDateState(new Date()), 1000);
+    setInterval(() => setDateState(new Date()), 0);
   }, []);
   return (
     <>
@@ -21,6 +21,7 @@ export const DateTime = () => {
             hour: "numeric",
             minute: "numeric",
             hour12: true,
+            second: 'numeric',
           })}
         </p>
       </div>
