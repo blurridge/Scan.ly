@@ -8,9 +8,9 @@ export const ProductRow = ({ product }) => {
           <img
             src={product.imageLink}
             class="rounded-full object-cover shadow-lg w-20 h-20"
-            alt="Avatar"
+            alt="Product Image"
           />
-          <span class="font-title text-4xl font-bold">{product.name}</span>
+          <span class="font-title text-2xl font-bold w-72">{product.name}</span>
         </div>
         <div class="flex gap-3 items-center">
           <svg
