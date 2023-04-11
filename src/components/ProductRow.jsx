@@ -29,7 +29,7 @@ export const ProductRow = ({ product }) => {
           </svg>
           <span
             class="font-title text-2xl font-bold"
-            style={{ color: product.stockCount > 20 ? "black" : "red" }}
+            style={{ color: product.stockCount > 5 ? "black" : "red" }}
           >
             {product.stockCount}
           </span>

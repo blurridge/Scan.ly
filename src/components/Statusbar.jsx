@@ -3,12 +3,12 @@ import { DateTime } from "./DateTime";
 import { Greeting } from "./Greeting";
 import { StockStats } from "./StockStats";
 
-export const Statusbar = () => {
+export const Statusbar = ({ products }) => {
   return (
     <>
       <div class="flex justify-between">
         <Greeting />
-        <StockStats />
+        <StockStats products={products} />
         <DateTime />
       </div>
     </>
