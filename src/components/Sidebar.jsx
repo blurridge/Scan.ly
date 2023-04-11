@@ -4,7 +4,7 @@ import squareLogo from "../assets/logo_sq.png";
 export const Sidebar = () => {
   return (
     <>
-      <div class="rounded-r-3xl bg-black text-white w-40 relative h-screen flex flex-col justify-between items-center py-10">
+      <div class="rounded-r-3xl bg-black text-white w-40 h-screen flex flex-col justify-between items-center py-10">
         <img src={squareLogo} class="w-20 h-20" alt="Scan.ly logo" />
         <nav class="flex flex-col gap-10">
           <a href="http://localhost:3000/">
