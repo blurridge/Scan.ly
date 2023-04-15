@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Statusbar } from "./Statusbar";
-import { getProducts } from "../utils/getProducts";
 import { ProductList } from "./ProductList";
 import { AddProductDialog } from "./AddProductDialog";
+import { db } from "../firebase/config";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 
 export const MainContent = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const productData = await getProducts();
-      setProducts([...productData]);
-    };
-    getData();
+    const q = query(collection(db, "products"), orderBy("timeAdded", "desc"));
+    const unsubscribe = onSnapshot(q, (snap) => {
+      const data = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setProducts(data);
+    });
+    return () => unsubscribe();
   }, []);
 
   return (
