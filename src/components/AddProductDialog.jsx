@@ -38,8 +38,8 @@ export const AddProductDialog = () => {
     const sendToFirebase = async () => {
       await setDoc(doc(db, "products/", productID), {
         name: productName,
-        price: productPrice,
-        stockCount: productStockCount,
+        price: parseFloat(productPrice),
+        stockCount: parseInt(productStockCount),
         description: productDescription,
         imageLink: productImageURL,
         timeAdded: serverTimestamp(),
@@ -151,6 +151,7 @@ export const AddProductDialog = () => {
                   id="priceField"
                   placeholder="PHP 0.00"
                   min="0"
+                  step="0.01"
                   value={productPrice}
                   onChange={(e) => setProductPrice(e.target.value)}
                 />
