@@ -31,7 +31,7 @@ export const AddProductDialog = () => {
     };
     if (productID.length !== 0) {
       setURL();
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productID]);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export const AddProductDialog = () => {
         productPhotoRef.current.value = null;
       }
     };
-    sendToFirebase();
+    sendToFirebase(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productImageURL]);
 
   return (
