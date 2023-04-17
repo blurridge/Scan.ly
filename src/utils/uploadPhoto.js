@@ -7,7 +7,7 @@ const metadata = {
 
 export const uploadPhoto = (id, file) => {
   return new Promise((resolve, reject) => {
-    const storageRef = ref(storage, `/${id}/thumb.jpg`);
+    const storageRef = ref(storage, `${id}-thumb.jpg`);
     const uploadTask = uploadBytesResumable(storageRef, file, metadata);
     uploadTask.on(
       "state_changed",
