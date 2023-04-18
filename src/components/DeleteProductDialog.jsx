@@ -98,7 +98,7 @@ export const DeleteProductDialog = ({ product }) => {
                   data-te-ripple-color="light"
                   data-te-modal-dismiss
                 >
-                  Submit
+                  Delete
                 </button>
               </div>
             </div>
