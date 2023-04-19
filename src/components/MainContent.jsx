@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Statusbar } from "./Statusbar";
 import { ProductList } from "./ProductList";
-import { AddProductDialog } from "./AddProductDialog";
 import { db } from "../firebase/config";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { AddProductDialog } from "../modals/AddProductDialog";
 
 export const MainContent = () => {
   const [products, setProducts] = useState([]);

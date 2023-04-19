@@ -1,8 +1,8 @@
 import React from "react";
-import { DeleteProductDialog } from "./DeleteProductDialog";
-import { EditProductDialog } from "./EditProductDialog";
 import { EditButton } from "./EditButton";
 import { DeleteButton } from "./DeleteButton";
+import { DeleteProductDialog } from "../modals/DeleteProductDialog";
+import { EditProductDialog } from "../modals/EditProductDialog";
 
 export const ProductRow = ({ product, products }) => {
   return (
@@ -12,7 +12,7 @@ export const ProductRow = ({ product, products }) => {
           <img
             src={product.imageLink}
             class="rounded-full object-cover shadow-lg w-20 h-20"
-            alt="Product Image"
+            alt={"Image of " + product.name}
           />
           <span class="font-title text-2xl font-bold w-72">{product.name}</span>
         </div>

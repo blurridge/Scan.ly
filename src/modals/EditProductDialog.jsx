@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { uploadPhoto } from "../utils/uploadPhoto";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
