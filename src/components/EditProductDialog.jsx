@@ -1,42 +1,46 @@
-import React, { useEffect, useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { uploadPhoto } from "../utils/uploadPhoto";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-export const AddProductDialog = () => {
-  const [productID, setProductID] = useState("");
+export const EditProductDialog = ({ product, id, products }) => {
   const [productPhoto, setProductPhoto] = useState(null);
-  const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productDescription, setProductDescription] = useState("");
-  const [productStockCount, setProductStockCount] = useState("");
-  const [productImageURL, setProductImageURL] = useState("");
+  const [productName, setProductName] = useState(product.name);
+  const [productPrice, setProductPrice] = useState(product.price);
+  const [productDescription, setProductDescription] = useState(
+    product.description
+  );
+  const [productStockCount, setProductStockCount] = useState(
+    product.stockCount
+  );
+  const [productImageURL, setProductImageURL] = useState(product.imageLink);
+  const [submitPressed, setSubmitPressed] = useState(false);
   const productPhotoRef = useRef();
 
   const getImageURL = async (id, file) => {
     const downloadURL = await uploadPhoto(id, file);
-    console.log("File available at " + downloadURL);
+    console.log("Replaced photo available at " + downloadURL);
     return downloadURL;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setProductID(uuidv4());
+    setSubmitPressed(true);
   };
 
   useEffect(() => {
     const setURL = async () => {
-      setProductImageURL(await getImageURL(productID, productPhoto));
+      setProductImageURL(await getImageURL(product.id, productPhoto));
     };
-    if (productID.length !== 0) {
+    if (productPhoto !== null) {
       setURL();
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productID]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productPhoto]);
 
   useEffect(() => {
-    const sendToFirebase = async () => {
-      await setDoc(doc(db, "products/", productID), {
+    const updateFirebaseDoc = async () => {
+      await setDoc(doc(db, "products/", product.id), {
         name: productName,
         price: parseFloat(productPrice),
         stockCount: parseInt(productStockCount),
@@ -44,37 +48,32 @@ export const AddProductDialog = () => {
         imageLink: productImageURL,
         timeAdded: serverTimestamp(),
       });
-      if (productImageURL.length !== 0) {
-        setProductPhoto(null);
-        setProductName("");
-        setProductPrice("");
-        setProductDescription("");
-        setProductStockCount("");
-        productPhotoRef.current.value = null;
-      }
+      setProductPhoto(null);
+      productPhotoRef.current.value = null;
+      setSubmitPressed(false);
     };
-    sendToFirebase(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productImageURL]);
+    if (submitPressed) {
+      updateFirebaseDoc(); // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+  }, [submitPressed]);
+
+  useEffect(() => {
+    setProductName(product.name);
+    setProductPrice(product.price);
+    setProductDescription(product.description);
+    setProductStockCount(product.stockCount);
+    setProductImageURL(product.imageLink);
+  }, [products])
 
   return (
     <>
-      <button
-        type="button"
-        class="inline-block rounded-full bg-neutral-800 px-6 pt-2.5 pb-2 text-lg font-title font-bold leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_#332d2d] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.3),0_4px_18px_0_rgba(51,45,45,0.2)]"
-        data-te-toggle="modal"
-        data-te-target="#addProductDialog"
-        data-te-ripple-init
-      >
-        + Add Product
-      </button>
-
       <form class="absolute" onSubmit={handleSubmit}>
         <div
           data-te-modal-init
           class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-          id="addProductDialog"
+          id={id}
           tabindex="-1"
-          aria-labelledby="addProductDialog"
+          aria-labelledby={id}
           aria-modal="true"
           role="dialog"
         >
@@ -86,9 +85,9 @@ export const AddProductDialog = () => {
               <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-gray-300 border-opacity-100 p-4 dark:border-opacity-50">
                 <h5
                   class="font-title text-xl font-bold leading-normal text-black"
-                  id="addProductDialogLabel"
+                  id="editProductDialogLabel"
                 >
-                  Add Product
+                  Edit {product.name}
                 </h5>
 
                 <button
@@ -210,14 +209,7 @@ export const AddProductDialog = () => {
                 </button>
                 <button
                   type="submit"
-                  class="ml-1 inline-block rounded bg-green-2 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-green-3 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-green-3 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-green-3 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] disabled:bg-gray-500 dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                  disabled={
-                    !productPhoto ||
-                    !productName ||
-                    productPrice === "" ||
-                    !productDescription ||
-                    productStockCount === ""
-                  }
+                  class="ml-1 inline-block rounded bg-green-2 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-green-3 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-green-3 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-green-3 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                   data-te-modal-dismiss
