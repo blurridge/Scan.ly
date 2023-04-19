@@ -4,6 +4,7 @@ import { ProductList } from "./ProductList";
 import { db } from "../firebase/config";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { AddProductDialog } from "../modals/AddProductDialog";
+import { AddProductButton } from "./AddProductButton";
 
 export const MainContent = () => {
   const [products, setProducts] = useState([]);
@@ -29,6 +30,7 @@ export const MainContent = () => {
             </span>
             <span class="font-title font-bold text-2xl">Low Stock</span>
           </div>
+          <AddProductButton />
           <AddProductDialog />
         </div>
         <div class="h-full overflow-y-auto">
