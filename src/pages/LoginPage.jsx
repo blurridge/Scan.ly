@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import { LogIn } from "../components/LogIn";
 
 export const LoginPage = () => {
   return (
-    <div>LoginPage</div>
-  )
+    <>
+      <div class="flex">
+        <LogIn />
+      </div>
+    </>
+  );
 }
