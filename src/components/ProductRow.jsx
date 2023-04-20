@@ -5,8 +5,6 @@ import { ViewButton } from "./ViewButton";
 import { DeleteProductDialog } from "../modals/DeleteProductDialog";
 import { EditProductDialog } from "../modals/EditProductDialog";
 
-// TODO: ADD VIEW BUTTON AND LINK TO DYNAMIC ROUTE
-
 export const ProductRow = ({ product, products }) => {
   return (
     <>

@@ -18,7 +18,6 @@ export const ProductPage = () => {
     };
     getProduct();
   }, []);
-  console.log(product);
   if (isLoading) {
     return (
       <>
@@ -39,7 +38,7 @@ export const ProductPage = () => {
   } else if (!isLoading && product.hasOwnProperty("name")) {
     return (
       <>
-        <div class="flex flex-col items-center justify-center mt-10 text-center">
+        <div class="flex flex-col items-center justify-center mt-10 mx-10 text-center">
           <img
             src={product.imageLink}
             class="rounded-lg shadow-lg h-80 mb-10"
@@ -52,7 +51,7 @@ export const ProductPage = () => {
           <span class="font-title text-xl">{product.description}</span>
         </div>
         <hr class="h-px my-10 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-100" />
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center mx-10">
           <span class="font-title text-xl">
             Stock Status: {product.stockCount !== 0 ? "✅" : "❌"}
           </span>

@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { uploadPhoto } from "../utils/uploadPhoto";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { generateQrCode } from "../utils/generateQrCode";
 
 export const AddProductDialog = () => {
   const [productID, setProductID] = useState("");
@@ -31,6 +32,7 @@ export const AddProductDialog = () => {
     };
     if (productID.length !== 0) {
       setURL();
+      generateQrCode(productID);
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productID]);
 
