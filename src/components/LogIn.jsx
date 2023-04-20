@@ -4,6 +4,8 @@ import { signInWithPopup, getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import googleLogo from "../assets/google_logo.png";
 
+// TODO: Implement sign out, store user details and show on Greeting component.
+
 export const LogIn = () => {
   const navigate = useNavigate();
   const auth = getAuth();
@@ -42,12 +44,12 @@ export const LogIn = () => {
   return (
     <>
       <button
-        class="flex gap-4 bg-white py-3 px-6 rounded-lg"
+        class="flex gap-4 bg-black py-3 px-6 rounded-lg"
         onClick={signInWithGoogle}
         data-te-ripple-init
       >
         <img src={googleLogo} class="w-5" />
-        <span class="font-title font-medium text-sm">Sign in with Google</span>
+        <span class="font-title font-medium text-sm text-white">Sign in with Google</span>
       </button>
     </>
   );
