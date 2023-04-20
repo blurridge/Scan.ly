@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.17.2",
     "install": "^0.13.0",
+    "jspdf": "^2.5.1",
     "npm": "^9.6.0",
     "qrcode": "^1.5.1",
     "react": "^18.2.0",

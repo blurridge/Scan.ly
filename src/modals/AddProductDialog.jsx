@@ -13,6 +13,7 @@ export const AddProductDialog = () => {
   const [productDescription, setProductDescription] = useState("");
   const [productStockCount, setProductStockCount] = useState("");
   const [productImageURL, setProductImageURL] = useState("");
+  const [productQR, setProductQR] = useState("");
   const productPhotoRef = useRef();
 
   const getImageURL = async (id, file) => {
@@ -30,9 +31,12 @@ export const AddProductDialog = () => {
     const setURL = async () => {
       setProductImageURL(await getImageURL(productID, productPhoto));
     };
+    const setQR = async () => {
+      setProductQR(await generateQrCode(productID));
+    };
     if (productID.length !== 0) {
       setURL();
-      generateQrCode(productID);
+      setQR();
     } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productID]);
 
@@ -44,6 +48,7 @@ export const AddProductDialog = () => {
         stockCount: parseInt(productStockCount),
         description: productDescription,
         imageLink: productImageURL,
+        qrData: productQR,
         timeAdded: serverTimestamp(),
       });
       if (productImageURL.length !== 0) {
@@ -52,6 +57,7 @@ export const AddProductDialog = () => {
         setProductPrice("");
         setProductDescription("");
         setProductStockCount("");
+        setProductQR("");
         productPhotoRef.current.value = null;
       }
     };

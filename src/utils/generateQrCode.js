@@ -11,6 +11,7 @@ export const generateQrCode = async (id) => {
     uploadString(storageRef, qr, "data_url").then((snapshot) => {
       console.log("QR Code uploaded!");
     });
+    return qr;
   } catch (err) {
     console.error(err);
   }

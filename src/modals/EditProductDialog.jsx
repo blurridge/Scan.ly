@@ -14,6 +14,7 @@ export const EditProductDialog = ({ product, id, products }) => {
     product.stockCount
   );
   const [productImageURL, setProductImageURL] = useState(product.imageLink);
+  const [productQR, setProductQR] = useState(product.qrData);
   const [submitPressed, setSubmitPressed] = useState(false);
   const productPhotoRef = useRef();
 
@@ -46,6 +47,7 @@ export const EditProductDialog = ({ product, id, products }) => {
         stockCount: parseInt(productStockCount),
         description: productDescription,
         imageLink: productImageURL,
+        qrData: productQR,
         timeAdded: serverTimestamp(),
       });
       setProductPhoto(null);
@@ -63,6 +65,7 @@ export const EditProductDialog = ({ product, id, products }) => {
     setProductDescription(product.description);
     setProductStockCount(product.stockCount);
     setProductImageURL(product.imageLink);
+    setProductQR(product.qrData);
   }, [products])
 
   return (
