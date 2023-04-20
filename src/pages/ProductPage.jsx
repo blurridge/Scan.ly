@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const ProductPage = () => {
   const id = useParams().productId;
@@ -12,7 +13,7 @@ export const ProductPage = () => {
       setIsLoading(true);
       const docRef = doc(db, "products", id);
       const productDoc = await getDoc(docRef);
-      setProduct({...productDoc.data(), id: productDoc.id});
+      setProduct({ ...productDoc.data(), id: productDoc.id });
       setIsLoading(false);
     };
     getProduct();
@@ -21,22 +22,37 @@ export const ProductPage = () => {
   if (isLoading) {
     return (
       <>
-        <span class="font-title text-2xl font-bold">Loading... </span>
+        <div class="flex flex-col items-center justify-center h-screen">
+          <RotatingSquare
+            height="100"
+            width="100"
+            color="#4fa94d"
+            ariaLabel="rotating-square-loading"
+            strokeWidth="4"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
       </>
     );
-  } else {
+  } else if (!isLoading && product.hasOwnProperty("name")) {
     return (
       <>
-        <div class="content-center">
+        <div class="flex flex-col items-center justify-center mt-10 text-center">
           <img
             src={product.imageLink}
-            class="shadow-lg w-20 h-20"
+            class="rounded-lg shadow-lg h-80 mb-10"
             alt={"Image of " + product.name}
           />
-          <span class="font-title text-2xl font-bold">{product.name}</span>
-          <span class="font-title text-xl font-bold">{product.price}</span>
+          <span class="font-title text-4xl font-bold mb-3">{product.name}</span>
+          <span class="font-title text-2xl font-bold mb-7">
+            {"PHP " + product.price}
+          </span>
           <span class="font-title text-xl">{product.description}</span>
-          <hr />
+        </div>
+        <hr class="h-px my-10 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-100" />
+        <div class="flex flex-col items-center">
           <span class="font-title text-xl">
             Stock Status: {product.stockCount !== 0 ? "✅" : "❌"}
           </span>
@@ -44,6 +60,18 @@ export const ProductPage = () => {
             Stock Count: {product.stockCount}
           </span>
         </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <>
+          <div class="flex flex-col items-center justify-center h-screen">
+            <span class="font-title text-2xl font-bold">
+              Sorry! Product does not exist.
+            </span>
+          </div>
+        </>
       </>
     );
   }
