@@ -1,9 +1,10 @@
 import React from "react";
 import panelPicture from "../assets/login_logo.png";
 import squareLogo from "../assets/logo_sq.png";
-import { LogIn } from "../components/LogIn";
+import { LoginButton } from "../components/LoginButton";
 
 export const LoginPage = () => {
+
   return (
     <>
       <div class="flex items-center justify-center h-screen">
@@ -13,7 +14,7 @@ export const LoginPage = () => {
         <div class="bg-gray-300 rounded-r-2xl px-20 py-24 flex flex-col items-center justify-center gap-4">
           <img src={squareLogo} class="w-40" />
           <span class="font-title font-bold">Account Login</span>
-          <LogIn />
+          <LoginButton />
         </div>
       </div>
     </>
