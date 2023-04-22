@@ -1,29 +1,15 @@
 import React from "react";
 import squareLogo from "../assets/logo_sq.png";
 import { LogoutButton } from "./LogoutButton";
+import { HomeButton } from "./HomeButton";
 
 export const Sidebar = () => {
   return (
     <>
-      <div class="rounded-r-3xl bg-black text-white w-40 h-screen flex flex-col justify-between items-center py-10">
-        <img src={squareLogo} class="w-20 h-20" alt="Scan.ly logo" />
+      <div class="rounded-r-3xl bg-black text-white w-40 h-screen flex flex-col justify-between items-center p-10">
+        <img src={squareLogo} class="w-20" alt="Scan.ly logo" />
         <nav class="flex flex-col gap-10">
-          <a href="http://localhost:3000/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-14 h-14"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
-          </a>
+          <HomeButton />
           <a href="http://localhost:3000/">
             <svg
               xmlns="http://www.w3.org/2000/svg"

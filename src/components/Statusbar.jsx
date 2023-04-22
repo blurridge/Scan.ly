@@ -6,7 +6,7 @@ import { StockStats } from "./StockStats";
 export const Statusbar = ({ products }) => {
   return (
     <>
-      <div class="flex justify-between">
+      <div class="flex justify-between gap-5">
         <Greeting />
         <StockStats products={products} />
         <DateTime />

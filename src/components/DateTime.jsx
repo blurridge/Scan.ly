@@ -8,7 +8,7 @@ export const DateTime = () => {
   return (
     <>
       <div class="px-40 py-7 bg-gray-200 rounded-3xl flex flex-col gap-2 items-center justify-center">
-        <p class="font-title font-bold text-4xl">
+        <p class="font-title font-bold text-4xl text-center">
           {" "}
           {dateState.toLocaleDateString("en-GB", {
             day: "numeric",
@@ -16,7 +16,7 @@ export const DateTime = () => {
             year: "numeric",
           })}
         </p>
-        <p class="font-title text-2xl">
+        <p class="font-title text-2xl text-center">
           {dateState.toLocaleString("en-US", {
             hour: "numeric",
             minute: "numeric",
