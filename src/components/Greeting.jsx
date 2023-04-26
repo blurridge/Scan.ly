@@ -9,16 +9,16 @@ export const Greeting = () => {
   };
   return (
     <>
-      <div class="px-20 py-7 bg-gray-200 rounded-3xl flex gap-20 items-center justify-center">
+      <div class="px-16 xl:px-20 py-3 xl:py-7 bg-gray-200 rounded-3xl flex flex-col-reverse xl:flex-row gap-5 xl:gap-20 items-center justify-center">
         <div class="flex flex-col gap-2 text-center">
-          <span class="font-title font-bold text-4xl">
+          <span class="font-title font-bold text-2xl xl:text-4xl">
             Hello, {getFirstName(user?.displayName)}
           </span>
-          <span class="font-title text-xl">wassup cuh</span>
+          <span class="font-title text-lg xl:text-xl">wassup cuh</span>
         </div>
         <img
           src={user?.photoURL}
-          class="rounded-full object-cover shadow-lg w-20 h-20"
+          class="rounded-full object-cover shadow-lg w-14 h-14 xl:w-20 xl:h-20"
           alt={"Image of " + user?.displayName}
         />
       </div>

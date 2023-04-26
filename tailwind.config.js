@@ -13,7 +13,10 @@ module.exports = {
       },
       fontFamily: {
         'title': ['Inter'],
-      }
+      },
+      screens: {
+        '2xl': '1440px',
+      },
     },
   },
   plugins: [require("tw-elements/dist/plugin")]
