@@ -8,6 +8,6 @@ export const ProductList = ({ products }) => {
     ));
   }
   else {
-    return <span class="font-title font-bold text-2xl">No Products Available!</span>;
+    return <span class="font-title font-bold text-2xl table m-auto">No Products Available!</span>;
   }
 };
