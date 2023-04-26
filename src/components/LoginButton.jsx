@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase/config";
-import { collection, query, onSnapshot } from "firebase/firestore";
 
-export const LoginButton = () => {
+export const LoginButton = ({ adminList }) => {
   const { googleLogin, user, logOut } = UserAuth();
-  const [adminList, setAdminList] = useState([]);
   const [validUser, setValidUser] = useState(true);
   const navigate = useNavigate();
 
@@ -20,16 +17,6 @@ export const LoginButton = () => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "users"));
-    const unsubscribe = onSnapshot(q, (snap) => {
-      const data = snap.docs.map((doc) => ({ ...doc.data() }));
-      const emails = data.map((data) => data.email);
-      setAdminList(emails);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  useEffect(() => {
     const checkIfUserExists = async () => {
       if (
         user !== null &&
@@ -38,7 +25,7 @@ export const LoginButton = () => {
       ) {
         setValidUser(true);
         navigate("/admin");
-      } else if (user !== null && user.hasOwnProperty("email")) {
+      } else if (user !== null && user.hasOwnProperty("email") && adminList.length !== 0) {
         setValidUser(false);
         await logOut();
       }

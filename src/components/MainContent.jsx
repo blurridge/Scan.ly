@@ -25,7 +25,7 @@ export const MainContent = () => {
   if (isLoading) {
     return (
       <>
-        <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)]">
+        <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
           <Statusbar products={products} />
           <span class="font-title font-bold text-4xl">Inventory</span>
           <div class="flex justify-between items-center">
@@ -56,7 +56,7 @@ export const MainContent = () => {
   } else {
     return (
       <>
-        <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)]">
+        <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
           <Statusbar products={products} />
           <span class="font-title font-bold text-4xl">Inventory</span>
           <div class="flex justify-between items-center">
@@ -69,7 +69,7 @@ export const MainContent = () => {
             <AddProductButton />
             <AddProductDialog />
           </div>
-          <div class="h-full overflow-y-auto">
+          <div class="overflow-y-auto">
             <ProductList products={products} />
           </div>
         </div>
