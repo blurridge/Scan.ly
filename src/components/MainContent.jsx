@@ -9,6 +9,8 @@ import { RotatingSquare } from "react-loader-spinner";
 
 export const MainContent = () => {
   const [products, setProducts] = useState([]);
+  const [lowStock, setLowStock] = useState([]);
+  const [productProps, setProductProps] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,10 +19,20 @@ export const MainContent = () => {
       setIsLoading(true);
       const data = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setProducts(data);
+      setProductProps(data);
+      setLowStock(data.filter((product) => product.stockCount <= 5));
       setIsLoading(false);
     });
     return () => unsubscribe();
   }, []);
+
+  const showLowStock = () => {
+    setProductProps(lowStock);
+  };
+
+  const showAllProducts = () => {
+    setProductProps(products);
+  };
 
   if (isLoading) {
     return (
@@ -30,10 +42,22 @@ export const MainContent = () => {
           <span class="font-title font-bold text-4xl">Inventory</span>
           <div class="flex justify-between items-center">
             <div>
-              <span class="font-title font-bold text-2xl mr-10">
-                All Inventory
-              </span>
-              <span class="font-title font-bold text-2xl">Low Stock</span>
+              <button
+                type="button"
+                class="rounded-full bg-gray-300 hover:bg-gray-400 px-5 py-2 mr-5"
+                onClick={showAllProducts}
+                data-te-ripple-init
+              >
+                <span class="font-title font-bold text-lg">All Inventory</span>
+              </button>
+              <button
+                type="button"
+                class="rounded-full bg-gray-300 hover:bg-gray-400 px-5 py-2 mr-5"
+                onClick={showLowStock}
+                data-te-ripple-init
+              >
+                <span class="font-title font-bold text-lg">Low Stock</span>
+              </button>
             </div>
             <AddProductButton />
             <AddProductDialog />
@@ -61,16 +85,28 @@ export const MainContent = () => {
           <span class="font-title font-bold text-4xl">Inventory</span>
           <div class="flex justify-between items-center">
             <div>
-              <span class="font-title font-bold text-2xl mr-10">
-                All Inventory
-              </span>
-              <span class="font-title font-bold text-2xl">Low Stock</span>
+              <button
+                type="button"
+                class="rounded-full bg-gray-300 hover:bg-gray-400 px-5 py-2 mr-5"
+                onClick={showAllProducts}
+                data-te-ripple-init
+              >
+                <span class="font-title font-bold text-lg">All Inventory</span>
+              </button>
+              <button
+                type="button"
+                class="rounded-full bg-gray-300 hover:bg-gray-400 px-5 py-2 mr-5"
+                onClick={showLowStock}
+                data-te-ripple-init
+              >
+                <span class="font-title font-bold text-lg">Low Stock</span>
+              </button>
             </div>
             <AddProductButton />
             <AddProductDialog />
           </div>
-          <div class="overflow-y-auto">
-            <ProductList products={products} />
+          <div class="text-center overflow-y-auto">
+            <ProductList products={productProps} />
           </div>
         </div>
       </>
