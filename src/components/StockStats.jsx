@@ -18,7 +18,7 @@ export const StockStats = ({ products }) => {
           >
             Total: {products.length}
           </span>
-          <span class="font-title font-bold text-3xl xl:text-4x" style={{ color: "red" }}>
+          <span class="font-title font-bold text-3xl xl:text-4xl" style={{ color: "red" }}>
             OOS: {oosCount}
           </span>
         </div>
