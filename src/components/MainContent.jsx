@@ -105,7 +105,7 @@ export const MainContent = () => {
             <AddProductButton />
             <AddProductDialog />
           </div>
-          <div class="text-center overflow-y-auto">
+          <div class="overflow-y-auto">
             <ProductList products={productProps} />
           </div>
         </div>
