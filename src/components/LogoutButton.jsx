@@ -1,5 +1,6 @@
 import React from "react";
 import { UserAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 export const LogoutButton = () => {
   const { user, logOut } = UserAuth();
@@ -7,6 +8,16 @@ export const LogoutButton = () => {
   const handleLogOut = async () => {
     try {
       await logOut();
+      toast.success(`Successfully logged out!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     } catch (error) {
       console.log(error);
     }
