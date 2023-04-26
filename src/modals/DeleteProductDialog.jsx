@@ -1,10 +1,34 @@
 import React from "react";
 import { deleteProduct } from "../utils/deleteProduct";
+import { toast } from "react-toastify";
 
 export const DeleteProductDialog = ({ product, id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    deleteProduct(product.id);
+    try {
+      deleteProduct(product.id);
+      toast.success(`Successfully deleted ${product.name}!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } catch {
+      toast.error(`Error deleting ${product.name}!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
   };
   return (
     <>

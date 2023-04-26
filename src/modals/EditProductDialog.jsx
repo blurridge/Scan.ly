@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { uploadPhoto } from "../utils/uploadPhoto";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { toast } from "react-toastify";
 
 export const EditProductDialog = ({ product, id, products }) => {
   const [productPhoto, setProductPhoto] = useState(null);
@@ -55,7 +56,31 @@ export const EditProductDialog = ({ product, id, products }) => {
       setSubmitPressed(false);
     };
     if (submitPressed) {
-      updateFirebaseDoc(); // eslint-disable-next-line react-hooks/exhaustive-deps
+      try {
+        updateFirebaseDoc();
+        toast.success(`Successfully edited ${productName}!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      } catch {
+        toast.error(`Error editing ${productName}!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
   }, [submitPressed]);
 
@@ -66,7 +91,7 @@ export const EditProductDialog = ({ product, id, products }) => {
     setProductStockCount(product.stockCount);
     setProductImageURL(product.imageLink);
     setProductQR(product.qrData);
-  }, [products])
+  }, [products]);
 
   return (
     <>

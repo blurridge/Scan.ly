@@ -4,6 +4,7 @@ import { uploadPhoto } from "../utils/uploadPhoto";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { generateQrCode } from "../utils/generateQrCode";
+import { toast } from "react-toastify";
 
 export const AddProductDialog = () => {
   const [productID, setProductID] = useState("");
@@ -61,7 +62,32 @@ export const AddProductDialog = () => {
         productPhotoRef.current.value = null;
       }
     };
-    sendToFirebase(); // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (productName !== "") {
+      try {
+        sendToFirebase(); // eslint-disable-next-line react-hooks/exhaustive-deps
+        toast.success(`Successfully added ${productName}!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      } catch {
+        toast.error(`Error adding ${productName}!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+    }
   }, [productImageURL]);
 
   return (
