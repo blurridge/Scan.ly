@@ -9,13 +9,13 @@ Scanly seeks for a solution that helps both the customer and the store. It provi
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/blurridge/scanly-app
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd scanly-app
 ```
 
 Install dependencies
