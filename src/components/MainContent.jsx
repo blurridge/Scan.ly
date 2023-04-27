@@ -56,7 +56,7 @@ export const MainContent = () => {
       return (
         <>
           <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
-            <Statusbar products={products} />
+            <Statusbar props={products} />
             <span class="font-title font-bold text-4xl">Inventory</span>
             <div class="flex justify-between items-center">
               <div>
@@ -101,7 +101,7 @@ export const MainContent = () => {
       return (
         <>
           <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
-            <Statusbar products={products} />
+            <Statusbar props={products} />
             <span class="font-title font-bold text-4xl">Inventory</span>
             <div class="flex justify-between items-center">
               <div>
@@ -139,7 +139,7 @@ export const MainContent = () => {
       return (
         <>
           <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
-            <Statusbar products={products} />
+            <Statusbar props={users} />
             <span class="font-title font-bold text-4xl">Users</span>
             <div class="flex justify-between items-center">
               <div>
@@ -167,11 +167,11 @@ export const MainContent = () => {
       return (
         <>
           <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
-            <Statusbar products={products} />
+            <Statusbar props={users} />
             <span class="font-title font-bold text-4xl">Users</span>
             <div class="flex justify-between items-center">
               <div>
-                <span class="font-title font-bold text-lg">All Users</span>
+                <span class="font-title font-bold text-2xl">All Users</span>
               </div>
               <AddUserButton />
               <AddUserDialog />
