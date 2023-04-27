@@ -80,8 +80,7 @@ export const EditProductDialog = ({ product, id, products }) => {
           theme: "dark",
         });
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitPressed]);
 
   useEffect(() => {
@@ -90,7 +89,7 @@ export const EditProductDialog = ({ product, id, products }) => {
     setProductDescription(product.description);
     setProductStockCount(product.stockCount);
     setProductImageURL(product.imageLink);
-    setProductQR(product.qrData);
+    setProductQR(product.qrData); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
   return (
