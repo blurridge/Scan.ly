@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import ContentContext from "../context/ContentContext";
+import React from "react";
+import { CurrentContent } from "../context/ContentContext";
 
 export const HomeButton = () => {
-  const { activeContent, setActiveContent } = useContext(ContentContext);
+  const { activeContent, setActiveContent } = CurrentContent();
   const handleOnClick = () => {
     setActiveContent("products");
   };

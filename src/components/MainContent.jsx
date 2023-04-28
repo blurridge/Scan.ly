@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Statusbar } from "./Statusbar";
 import { ProductList } from "./ProductList";
 import { UserList } from "./UserList";
@@ -9,7 +9,7 @@ import { AddProductButton } from "./AddProductButton";
 import { AddUserButton } from "./AddUserButton";
 import { AddUserDialog } from "../modals/AddUserDialog";
 import { RotatingSquare } from "react-loader-spinner";
-import ContentContext from "../context/ContentContext";
+import { CurrentContent } from "../context/ContentContext";
 
 export const MainContent = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ export const MainContent = () => {
   const [users, setUsers] = useState([]);
   const [productProps, setProductProps] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { activeContent } = useContext(ContentContext);
+  const { activeContent } = CurrentContent();
 
   useEffect(() => {
     if (activeContent === "users") {

@@ -17,7 +17,7 @@ export const ProductPage = () => {
       setProduct({ ...productDoc.data(), id: productDoc.id });
       setIsLoading(false);
     };
-    getProduct();
+    getProduct(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (isLoading) {
     return (
@@ -44,7 +44,7 @@ export const ProductPage = () => {
             <div class="flex flex-col items-center justify-center mt-10 mx-10 text-center">
               <img
                 src={product.imageLink}
-                class="rounded-lg shadow-lg h-80 mb-10"
+                class="rounded-lg shadow-lg max-h-80 mb-10"
                 alt={"Image of " + product.name}
               />
               <span class="font-title text-4xl font-bold mb-3">
@@ -56,7 +56,7 @@ export const ProductPage = () => {
               <span class="font-title text-xl">{product.description}</span>
             </div>
             <hr class="h-px my-10 border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-100" />
-            <div class="flex flex-col items-center mx-10">
+            <div class="flex flex-col items-center mx-10 text-center">
               <span class="font-title text-xl">
                 Stock Status: {product.stockCount !== 0 ? "✅" : "❌"}
               </span>

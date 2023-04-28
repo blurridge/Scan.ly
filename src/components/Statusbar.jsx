@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { DateTime } from "./DateTime";
 import { Greeting } from "./Greeting";
 import { StockStats } from "./StockStats";
 import { UserStats } from "./UserStats";
-import ContentContext from "../context/ContentContext";
+import { CurrentContent } from "../context/ContentContext";
 
 export const Statusbar = ({ props }) => {
-  const { activeContent } = useContext(ContentContext);
+  const { activeContent } = CurrentContent();
   if (activeContent === "products") {
     return (
       <>
