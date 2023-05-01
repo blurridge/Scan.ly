@@ -6,6 +6,8 @@ import { DeleteProductDialog } from "../modals/DeleteProductDialog";
 import { EditProductDialog } from "../modals/EditProductDialog";
 import { ProductTagButton } from "./ProductTagButton";
 
+// TODO: Convert to table structure
+
 export const ProductRow = ({ product, products }) => {
   return (
     <>
