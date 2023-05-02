@@ -12,13 +12,13 @@ export const ProductRow = ({ product, products }) => {
   return (
     <>
       <div class="rounded-3xl bg-gray-200 px-10 py-5 flex items-center justify-between mb-5">
-        <div class="flex gap-10 items-center">
+        <div class="flex gap-10 items-center w-72 xl:w-[32rem]">
           <img
             src={product.imageLink}
             class="rounded-full object-cover shadow-lg w-14 h-14 xl:w-20 xl:h-20"
             alt={"Image of " + product.name}
           />
-          <span class="font-title text-lg xl:text-2xl font-bold mr-5 w-48 xl:w-72">{product.name}</span>
+          <span class="font-title text-lg xl:text-2xl font-bold mr-5">{product.name}</span>
         </div>
         <div class="flex gap-3 items-center">
           <svg
