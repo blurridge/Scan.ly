@@ -55,9 +55,9 @@ export const MainContent = () => {
     if (isLoading) {
       return (
         <>
-          <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
+          <div class="flex flex-col flex-1 mt-10 gap-5 pl-12 xl:pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
             <Statusbar props={products} />
-            <span class="font-title font-bold text-4xl">Inventory</span>
+            <span class="font-title font-bold text-2xl lg:text-4xl">Inventory</span>
             <div class="flex justify-between items-center">
               <div>
                 <button
@@ -66,7 +66,7 @@ export const MainContent = () => {
                   onClick={showAllProducts}
                   data-te-ripple-init
                 >
-                  <span class="font-title font-bold text-lg">
+                  <span class="font-title font-bold text-sm lg:text-lg">
                     All Inventory
                   </span>
                 </button>
@@ -76,7 +76,7 @@ export const MainContent = () => {
                   onClick={showLowStock}
                   data-te-ripple-init
                 >
-                  <span class="font-title font-bold text-lg">Low Stock</span>
+                  <span class="font-title font-bold text-sm lg:text-lg">Low Stock</span>
                 </button>
               </div>
               <AddProductButton />
@@ -100,9 +100,9 @@ export const MainContent = () => {
     } else {
       return (
         <>
-          <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
+          <div class="flex flex-col flex-1 mt-10 gap-5 pl-12 xl:pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
             <Statusbar props={products} />
-            <span class="font-title font-bold text-4xl">Inventory</span>
+            <span class="font-title font-bold text-2xl lg:text-4xl">Inventory</span>
             <div class="flex justify-between items-center">
               <div>
                 <button
@@ -111,7 +111,7 @@ export const MainContent = () => {
                   onClick={showAllProducts}
                   data-te-ripple-init
                 >
-                  <span class="font-title font-bold text-lg">
+                  <span class="font-title font-bold text-sm lg:text-lg">
                     All Inventory
                   </span>
                 </button>
@@ -121,7 +121,7 @@ export const MainContent = () => {
                   onClick={showLowStock}
                   data-te-ripple-init
                 >
-                  <span class="font-title font-bold text-lg">Low Stock</span>
+                  <span class="font-title font-bold text-sm lg:text-lg">Low Stock</span>
                 </button>
               </div>
               <AddProductButton />
@@ -138,12 +138,12 @@ export const MainContent = () => {
     if (isLoading) {
       return (
         <>
-          <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
+          <div class="flex flex-col flex-1 mt-10 gap-5 pl-12 xl:pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
             <Statusbar props={users} />
-            <span class="font-title font-bold text-4xl">Users</span>
+            <span class="font-title font-bold text-2xl lg:text-4xl">Users</span>
             <div class="flex justify-between items-center">
               <div>
-                <span class="font-title font-bold text-lg">All Users</span>
+                <span class="font-title font-bold text-xl lg:text-2xl">All Users</span>
               </div>
               <AddUserButton />
               <AddUserDialog />
@@ -166,12 +166,12 @@ export const MainContent = () => {
     } else {
       return (
         <>
-          <div class="flex flex-col flex-1 mt-10 gap-5 pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
+          <div class="flex flex-col flex-1 mt-10 gap-5 pl-12 xl:pl-40 pr-10 h-[calc(100vh-40px)] overflow-hidden">
             <Statusbar props={users} />
-            <span class="font-title font-bold text-4xl">Users</span>
+            <span class="font-title font-bold text-2xl lg:text-4xl">Users</span>
             <div class="flex justify-between items-center">
               <div>
-                <span class="font-title font-bold text-2xl">All Users</span>
+                <span class="font-title font-bold text-xl lg:text-2xl">All Users</span>
               </div>
               <AddUserButton />
               <AddUserDialog />

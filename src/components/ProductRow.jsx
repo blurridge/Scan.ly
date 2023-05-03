@@ -11,14 +11,14 @@ import { ProductTagButton } from "./ProductTagButton";
 export const ProductRow = ({ product, products }) => {
   return (
     <>
-      <div class="rounded-3xl bg-gray-200 px-10 py-5 flex items-center justify-between mb-5">
-        <div class="flex gap-10 items-center w-72 xl:w-[32rem]">
+      <div class="rounded-3xl bg-gray-200 px-5 lg:px-10 py-5 flex items-center justify-between mb-5">
+        <div class="flex gap-5 lg:gap-10 items-center">
           <img
             src={product.imageLink}
-            class="rounded-full object-cover shadow-lg w-14 h-14 xl:w-20 xl:h-20"
+            class="rounded-full object-cover shadow-lg grow-0 shrink-0 w-10 h-10 lg:w-14 lg:h-14 xl:w-20 xl:h-20"
             alt={"Image of " + product.name}
           />
-          <span class="font-title text-lg xl:text-2xl font-bold mr-5">{product.name}</span>
+          <span class="font-title text-sm lg:text-lg xl:text-2xl font-bold mr-5 w-[100px] lg:w-[300px]">{product.name}</span>
         </div>
         <div class="flex gap-3 items-center">
           <svg
