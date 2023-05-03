@@ -1,8 +1,8 @@
 import React from "react";
 import squareLogo from "../assets/logo_sq.png";
-import { LogoutButton } from "./LogoutButton";
-import { HomeButton } from "./HomeButton";
-import { UserButton } from "./UserButton";
+import { LogoutButton } from "../components/LogoutButton";
+import { HomeButton } from "../components/HomeButton";
+import { UserButton } from "../components/UserButton";
 
 export const Sidebar = () => {
   return (

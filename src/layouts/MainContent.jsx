@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Statusbar } from "./Statusbar";
-import { ProductList } from "./ProductList";
-import { UserList } from "./UserList";
+import { Statusbar } from "../components/Statusbar";
+import { ProductList } from "../components/ProductList";
+import { UserList } from "../components/UserList";
 import { db } from "../firebase/config";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { AddProductDialog } from "../modals/AddProductDialog";
-import { AddProductButton } from "./AddProductButton";
-import { AddUserButton } from "./AddUserButton";
+import { AddProductButton } from "../components/AddProductButton";
+import { AddUserButton } from "../components/AddUserButton";
 import { AddUserDialog } from "../modals/AddUserDialog";
 import { RotatingSquare } from "react-loader-spinner";
 import { CurrentContent } from "../context/ContentContext";

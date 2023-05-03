@@ -105,7 +105,7 @@ export const ProductFooter = () => {
 
         <div class="p-4 text-center bg-gray-900">
           <a class="text-white" href="https://scanly-app.vercel.app/">
-          © 2023 Copyright Scan.ly
+            © 2023 Copyright Scan.ly
           </a>
         </div>
       </footer>

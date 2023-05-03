@@ -1,8 +1,8 @@
 import React from "react";
-import { MainContent } from "../components/MainContent";
-import { Sidebar } from "../components/Sidebar";
+import { MainContent } from "../layouts/MainContent";
+import { Sidebar } from "../layouts/Sidebar";
 import { ContentContextProvider } from "../context/ContentContext";
-import { MobileNavbar } from "../components/MobileNavbar";
+import { MobileNavbar } from "../layouts/MobileNavbar";
 import { CurrentWindowSize } from "../context/WindowContext";
 
 export const AdminPage = () => {

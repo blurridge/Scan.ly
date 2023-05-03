@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { RotatingSquare } from "react-loader-spinner";
-import { ProductFooter } from "../components/ProductFooter";
+import { ProductFooter } from "../layouts/ProductFooter";
 
 export const ProductPage = () => {
   const id = useParams().productId;
