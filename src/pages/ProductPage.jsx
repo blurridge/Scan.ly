@@ -39,7 +39,7 @@ export const ProductPage = () => {
   } else if (!isLoading && product.hasOwnProperty("name")) {
     return (
       <>
-        <div class="flex flex-col h-screen">
+        <div class="flex flex-col gap-10 h-screen">
           <div class="flex-[1_0_auto]">
             <div class="flex flex-col items-center justify-center mt-10 mx-10 text-center">
               <img
