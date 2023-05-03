@@ -12,6 +12,7 @@ export const HomeButton = () => {
         className="bg-transparent rounded-md hover:bg-black"
         onClick={handleOnClick}
         data-te-ripple-init
+        data-te-offcanvas-dismiss
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

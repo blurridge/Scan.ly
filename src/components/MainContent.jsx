@@ -107,21 +107,21 @@ export const MainContent = () => {
               <div>
                 <button
                   type="button"
-                  class="rounded-full bg-gray-300 hover:bg-gray-400 px-5 py-2 mr-5"
+                  class="rounded-full bg-gray-300 hover:bg-gray-400 px-3 md:px-5 py-2 mr-5"
                   onClick={showAllProducts}
                   data-te-ripple-init
                 >
-                  <span class="font-title font-bold text-sm lg:text-lg">
+                  <span class="font-title font-bold text-xs md:text-sm lg:text-lg">
                     All Inventory
                   </span>
                 </button>
                 <button
                   type="button"
-                  class="rounded-full bg-gray-300 hover:bg-gray-400 px-5 py-2 mr-5"
+                  class="rounded-full bg-gray-300 hover:bg-gray-400 px-3 md:px-5 py-2 mr-5"
                   onClick={showLowStock}
                   data-te-ripple-init
                 >
-                  <span class="font-title font-bold text-sm lg:text-lg">Low Stock</span>
+                  <span class="font-title font-bold text-xs md:text-sm lg:text-lg">Low Stock</span>
                 </button>
               </div>
               <AddProductButton />
