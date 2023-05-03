@@ -147,6 +147,7 @@ export const AddProductDialog = () => {
                   type="file"
                   id="formFile"
                   ref={productPhotoRef}
+                  accept="image/jpeg, image/jpg, image/png"
                   onChange={(e) => setProductPhoto(e.target.files[0])}
                 />
               </div>
