@@ -30,7 +30,7 @@ export const Greeting = () => {
   }, [currentHour]);
   return (
     <>
-      <div class="px-14 lg:px-20 py-3 xl:py-7 bg-gray-200 rounded-3xl flex flex-col-reverse xl:flex-row gap-2 xl:gap-20 items-center justify-center">
+      <div class="px-6 md:px-14 lg:px-20 py-3 xl:py-7 bg-gray-200 rounded-3xl flex flex-col-reverse xl:flex-row gap-2 xl:gap-20 items-center justify-center">
         <div class="flex flex-col gap-2 text-center">
           <span class="font-title font-bold text-lg lg:text-2xl xl:text-4xl">
             Hello, {getFirstName(user?.displayName)}

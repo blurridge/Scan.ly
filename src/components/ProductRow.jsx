@@ -18,21 +18,21 @@ export const ProductRow = ({ product, products }) => {
         <div class="flex gap-5 lg:gap-10 items-center">
           <img
             src={product.imageLink}
-            class="rounded-full object-cover shadow-lg grow-0 shrink-0 w-10 h-10 lg:w-14 lg:h-14 xl:w-20 xl:h-20"
+            class="rounded-full object-cover shadow-lg grow-0 shrink-0 w-6 h-6 md:w-10 md:h-10 lg:w-14 lg:h-14 xl:w-20 xl:h-20"
             alt={"Image of " + product.name}
           />
-          <span class="font-title text-sm lg:text-lg xl:text-2xl font-bold mr-5 w-[100px] lg:w-[300px]">
+          <span class="font-title text-sm lg:text-lg xl:text-2xl font-bold mr-5 w-[70px] md:w-[100px] lg:w-[300px]">
             {product.name}
           </span>
         </div>
-        <div class="flex gap-3 items-center">
+        <div class="flex gap-2 lg:gap-3 items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-8 h-8 xl:w-10 xl:h-10"
+            class="w-5 h-5 lg:w-8 lg:h-8 xl:w-10 xl:h-10"
           >
             <path
               stroke-linecap="round"
@@ -41,7 +41,7 @@ export const ProductRow = ({ product, products }) => {
             />
           </svg>
           <span
-            class="font-title text-lg xl:text-2xl font-bold"
+            class="font-title text-sm lg:text-lg xl:text-2xl font-bold"
             style={{ color: product.stockCount > 5 ? "black" : "red" }}
           >
             {product.stockCount}
