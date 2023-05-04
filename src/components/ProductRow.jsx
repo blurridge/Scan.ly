@@ -21,7 +21,7 @@ export const ProductRow = ({ product, products }) => {
             class="rounded-full object-cover shadow-lg grow-0 shrink-0 w-6 h-6 md:w-10 md:h-10 lg:w-14 lg:h-14 xl:w-20 xl:h-20"
             alt={"Image of " + product.name}
           />
-          <span class="break-words font-title text-sm lg:text-lg xl:text-2xl font-bold mr-5 w-24 md:w-60 lg:w-72">
+          <span class="break-words font-title text-sm lg:text-lg xl:text-2xl font-bold w-24 md:w-64 lg:w-72">
             {product.name}
           </span>
         </div>

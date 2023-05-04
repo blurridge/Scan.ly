@@ -10,7 +10,7 @@ export const StockStats = ({ products }) => {
 
   return (
     <>
-      <div class="py-3 xl:py-7 px-10 lg:px-20 bg-gray-200 rounded-3xl flex gap-20 items-center justify-center">
+      <div class="py-3 xl:py-7 px-10 xl:px-20 bg-gray-200 rounded-3xl flex gap-20 items-center justify-center">
         <div class="flex flex-col gap-2 text-center">
           <span
             class="font-title font-bold text-lg lg:text-2xl xl:text-4xl"
