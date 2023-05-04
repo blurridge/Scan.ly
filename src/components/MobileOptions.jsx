@@ -56,7 +56,7 @@ export const MobileOptions = ({ product, products }) => {
         id={"me" + product.id}
         products={products}
       />
-      <DeleteProductDialog product={product} id={"dm" + product.id} />
+      <DeleteProductDialog product={product} id={"md" + product.id} />
     </div>
   );
 };
