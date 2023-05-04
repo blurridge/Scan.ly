@@ -19,6 +19,12 @@ export const ProductPage = () => {
     };
     getProduct(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const currencyFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+  });
+
   if (isLoading) {
     return (
       <>
@@ -51,7 +57,7 @@ export const ProductPage = () => {
                 {product.name}
               </span>
               <span class="font-title text-2xl font-bold mb-7">
-                {"PHP " + product.price}
+                {currencyFormatter.format(product.price)}
               </span>
               <span class="font-title text-xl">{product.description}</span>
             </div>
