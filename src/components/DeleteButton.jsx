@@ -9,6 +9,7 @@ export const DeleteButton = ({ id }) => {
         data-te-toggle="modal"
         data-te-target={"#" + id}
         data-te-ripple-init
+        data-te-dropdown-item-ref
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

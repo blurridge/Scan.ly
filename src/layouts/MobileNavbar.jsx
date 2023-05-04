@@ -5,8 +5,6 @@ import { LogoutButton } from "../components/LogoutButton";
 import { HomeButton } from "../components/HomeButton";
 import { UserButton } from "../components/UserButton";
 
-// TODO: Implement hamburger menu
-
 export const MobileNavbar = () => {
   return (
     <>

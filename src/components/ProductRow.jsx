@@ -5,10 +5,13 @@ import { ViewButton } from "./ViewButton";
 import { DeleteProductDialog } from "../modals/DeleteProductDialog";
 import { EditProductDialog } from "../modals/EditProductDialog";
 import { ProductTagButton } from "./ProductTagButton";
+import { MobileOptions } from "./MobileOptions";
+import { CurrentWindowSize } from "../context/WindowContext";
 
-// TODO: Convert to table structure
+// TODO: Implement hamburger for buttons and responsiveness on mobile
 
 export const ProductRow = ({ product, products }) => {
+  const { isMobile } = CurrentWindowSize();
   return (
     <>
       <div class="rounded-3xl bg-gray-200 px-5 lg:px-10 py-5 flex items-center justify-between mb-5">
@@ -18,7 +21,9 @@ export const ProductRow = ({ product, products }) => {
             class="rounded-full object-cover shadow-lg grow-0 shrink-0 w-10 h-10 lg:w-14 lg:h-14 xl:w-20 xl:h-20"
             alt={"Image of " + product.name}
           />
-          <span class="font-title text-sm lg:text-lg xl:text-2xl font-bold mr-5 w-[100px] lg:w-[300px]">{product.name}</span>
+          <span class="font-title text-sm lg:text-lg xl:text-2xl font-bold mr-5 w-[100px] lg:w-[300px]">
+            {product.name}
+          </span>
         </div>
         <div class="flex gap-3 items-center">
           <svg
@@ -42,18 +47,24 @@ export const ProductRow = ({ product, products }) => {
             {product.stockCount}
           </span>
         </div>
-        <div class="flex ml-10 gap-2 xl:gap-5 items-center">
-          <ViewButton id={product.id} />
-          <ProductTagButton product={product} />
-          <EditButton id={"e" + product.id} />
-          <EditProductDialog
-            product={product}
-            id={"e" + product.id}
-            products={products}
-          />
-          <DeleteButton id={"d" + product.id} />
-          <DeleteProductDialog product={product} id={"d" + product.id} />
-        </div>
+        {isMobile ? (
+          <div>
+            <MobileOptions product={product} products={products}/>
+          </div>
+        ) : (
+          <div class="flex ml-10 gap-2 xl:gap-5 items-center">
+            <ViewButton id={product.id} />
+            <ProductTagButton product={product} />
+            <EditButton id={"e" + product.id} />
+            <EditProductDialog
+              product={product}
+              id={"e" + product.id}
+              products={products}
+            />
+            <DeleteButton id={"d" + product.id} />
+            <DeleteProductDialog product={product} id={"d" + product.id} />
+          </div>
+        )}
       </div>
     </>
   );

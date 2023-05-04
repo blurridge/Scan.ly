@@ -15,6 +15,9 @@ module.exports = {
         'title': ['Inter'],
       },
       screens: {
+        '2xs': '320px',
+        'xs': '375px',
+        'sm': '425px', 
         '2xl': '1440px',
       },
     },
